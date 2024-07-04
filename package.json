@@ -4,6 +4,7 @@
     "dotenv": "^16.4.5",
     "expres": "^0.0.5",
     "express": "^4.19.2",
+    "ip": "^2.0.1",
     "remote-ip": "^1.0.1"
   },
   "name": "stageone",
