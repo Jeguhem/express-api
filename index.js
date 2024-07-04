@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const dotenv = require("dotenv");
 const getIP = require("ip");
+
 // const myIP = getIP.address();
 const app = express();
 
@@ -18,14 +19,13 @@ app.get("/api/hello", async (req, res) => {
   }
 
   try {
-    // const response = await axios.get("https://api.ipify.org?format=json");
-    // const Ip_data = response.data;
-    // let myIP = Ip_data.ip;
-    // const clientIp = req.headers['x-forwarded-for']
+    // const response = await fetch("https://api.ipify.org?format=json");
+    // const ip_data = await response.json();
+    // let myIP = ip_data.ip;
+    const clientIp =
+      req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
-    const response = await fetch("https://api.ipify.org?format=json");
-    const ip_data = await response.json();
-    let myIP = ip_data.ip;
+    const myIP = clientIp.includes(":") ? clientIp.split(":").pop() : clientIp;
 
     console.log(myIP);
 
