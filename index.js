@@ -16,6 +16,11 @@ app.get("/api/hello", async (req, res) => {
   }
 
   try {
+    // const clientIp =
+    //   req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+    // const myIP = clientIp.includes(":") ? clientIp.split(":").pop() : clientIp;
+
+    // console.log(myIP);
     const response = await axios.get("https://api.ipify.org?format=json");
     const Ip_data = response.data;
     let myIP = Ip_data.ip;
